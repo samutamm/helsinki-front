@@ -81,7 +81,7 @@
 	  _createClass(App, [{
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(_eventlist2.default, null);
+	      return _react2.default.createElement(_eventlist2.default, { url: 'http://localhost:5000/events' });
 	    }
 	  }]);
 	
@@ -21973,7 +21973,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _jquery = __webpack_require__(/*! jquery */ 176);
+	var _jquery = __webpack_require__(/*! jquery */ 173);
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
@@ -21984,9 +21984,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var URL = "http://localhost:5000/events";
-	//const URL = "https://www.npmjs.com/package/react-fetch";
 	
 	var Event = function (_React$Component) {
 	  _inherits(Event, _React$Component);
@@ -22002,15 +21999,24 @@
 	  _createClass(Event, [{
 	    key: "render",
 	    value: function render() {
-	
+	      var names = this.props.data.name;
+	      var eventName;
+	      if (names === null) {
+	        eventName = "Tuntematon";
+	      } else {
+	        eventName = names.fi;
+	      }
+	      var image = this.props.data.image;
+	      //debugger;
 	      return _react2.default.createElement(
 	        "div",
-	        null,
+	        { style: { border: 1 + 'px solid green' } },
 	        _react2.default.createElement(
 	          "p",
 	          null,
-	          "Tuntematon"
-	        )
+	          eventName
+	        ),
+	        _react2.default.createElement("img", { src: image, style: { width: 50 + 'px', height: 50 + 'px' } })
 	      );
 	    }
 	  }]);
@@ -22036,7 +22042,7 @@
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
 	      _jquery2.default.ajax({
-	        url: URL,
+	        url: this.props.url,
 	        dataType: 'json',
 	        cache: false,
 	        success: function (data) {
@@ -22070,10 +22076,7 @@
 	exports.default = EventsList;
 
 /***/ },
-/* 173 */,
-/* 174 */,
-/* 175 */,
-/* 176 */
+/* 173 */
 /*!*********************************!*\
   !*** ./~/jquery/dist/jquery.js ***!
   \*********************************/

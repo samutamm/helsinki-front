@@ -1,19 +1,27 @@
 import React from 'react';
 import $ from "jquery";
 
-const URL = "http://localhost:5000/events";
-//const URL = "https://www.npmjs.com/package/react-fetch";
-
 class Event extends React.Component {
   constructor(props) {
     super(props);
   }
   //<div onClick={this.handleClick.bind(this)}></div>
   render() {
-
-      return (<div><p>Tuntematon</p></div>);
-    
-
+    var names = this.props.data.name;
+    var eventName;
+    if (names === null) {
+      eventName = "Tuntematon";
+    } else {
+      eventName = names.fi;
+    }
+    var image = this.props.data.image;
+    //debugger;
+    return (
+      <div style={{border: 1+'px solid green'}}>
+        <p>{eventName}</p>
+        <img src={image} style={{width: 50 + 'px', height: 50 + 'px'}}/>
+      </div>
+    );
   }
 }
 
@@ -27,7 +35,7 @@ class EventsList extends React.Component {
   }
   componentDidMount() {
     $.ajax({
-      url: URL,
+      url: this.props.url,
       dataType: 'json',
       cache: false,
       success: function(data) {

@@ -4,7 +4,7 @@ import EventList from './eventlist.jsx';
 
 class App extends React.Component {
   render () {
-    return <EventList />;
+    return <EventList url="http://localhost:5000/events"/>;
   }
 }
 
