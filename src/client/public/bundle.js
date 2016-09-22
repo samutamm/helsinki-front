@@ -21961,7 +21961,7 @@
   \**************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -21985,6 +21985,16 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	var eventStyle = {
+	  border: 2 + 'px solid green'
+	};
+	
+	var eventImage = {
+	  width: 50 + 'px',
+	  height: 50 + 'px',
+	  border: 2 + 'px solid white'
+	};
+	
 	var Event = function (_React$Component) {
 	  _inherits(Event, _React$Component);
 	
@@ -21997,7 +22007,7 @@
 	
 	
 	  _createClass(Event, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 	      var names = this.props.data.name;
 	      var eventName;
@@ -22007,16 +22017,15 @@
 	        eventName = names.fi;
 	      }
 	      var image = this.props.data.image;
-	      //debugger;
 	      return _react2.default.createElement(
-	        "div",
-	        { style: { border: 1 + 'px solid green' } },
+	        'div',
+	        { style: eventStyle },
 	        _react2.default.createElement(
-	          "p",
-	          null,
+	          'h1',
+	          { style: { fontStyle: 'italic' } },
 	          eventName
 	        ),
-	        _react2.default.createElement("img", { src: image, style: { width: 50 + 'px', height: 50 + 'px' } })
+	        _react2.default.createElement('img', { src: image, style: eventImage })
 	      );
 	    }
 	  }]);
@@ -22039,7 +22048,7 @@
 	  }
 	
 	  _createClass(EventsList, [{
-	    key: "componentDidMount",
+	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      _jquery2.default.ajax({
 	        url: this.props.url,
@@ -22057,13 +22066,13 @@
 	      });
 	    }
 	  }, {
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 	      var eventNodes = this.state.events.map(function (event) {
 	        return _react2.default.createElement(Event, { data: event, key: event._id.$oid });
 	      });
 	      return _react2.default.createElement(
-	        "div",
+	        'div',
 	        null,
 	        eventNodes
 	      );

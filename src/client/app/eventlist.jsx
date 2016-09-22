@@ -1,6 +1,16 @@
 import React from 'react';
 import $ from "jquery";
 
+const eventStyle = {
+  border: 2+'px solid green'
+};
+
+const eventImage = {
+  width: 50 + 'px',
+  height: 50 + 'px',
+  border: 2 + 'px solid white'
+};
+
 class Event extends React.Component {
   constructor(props) {
     super(props);
@@ -15,11 +25,10 @@ class Event extends React.Component {
       eventName = names.fi;
     }
     var image = this.props.data.image;
-    //debugger;
     return (
-      <div style={{border: 1+'px solid green'}}>
-        <p>{eventName}</p>
-        <img src={image} style={{width: 50 + 'px', height: 50 + 'px'}}/>
+      <div style={eventStyle}>
+        <h1 style={{fontStyle: 'italic'}} >{eventName}</h1>
+        <img src={image} style={eventImage}/>
       </div>
     );
   }
