@@ -16,6 +16,10 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.get('*', (req, res) => {
+  res.sendFile('src/client/index.html', { root: __dirname });
+});
+
 app.listen(app.get('port'), function() {
   console.log('Server started: http://localhost:' + app.get('port') + '/');
 });
