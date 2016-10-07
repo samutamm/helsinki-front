@@ -6,7 +6,7 @@ import App from './app.jsx';
 
 export default(
   <Router history={browserHistory}>
-    <Route path="/" component={App}>
+    <Route path="/" url="http://localhost:5000/events" component={App}>
       <Route path="events" events={[]} component={Mainpage}/>
       <Route path="about" component={About}/>
     </Route>

@@ -36,30 +36,8 @@ class Event extends React.Component {
 
 
 class EventsList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      events: []
-    }
-  }
-  componentDidMount() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      cache: false,
-      success: function(data) {
-        const resultJson = JSON.parse(data)
-        this.setState({
-          events: resultJson
-        });
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(URL, status, err.toString());
-      }.bind(this)
-    });
-  }
   render() {
-    var eventNodes = this.state.events.map(function(event) {
+    var eventNodes = [].map(function(event) {
       return (
         <Event data={event} key={event._id.$oid}>
         </Event>
